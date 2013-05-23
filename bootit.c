@@ -40,10 +40,10 @@ static int __init bootit_init(void)
 			reg &= ~(BOOTLOADER_MODE | RECOVERY_MODE | FORCED_RECOVERY_MODE);
 	}
 	else {
-	*/
-		/* Clearing SCRATCH0 31:30:1 on default reboot */
+		// Clearing SCRATCH0 31:30:1 on default reboot
 		reg &= ~(BOOTLOADER_MODE | RECOVERY_MODE | FORCED_RECOVERY_MODE);
-	/* } */
+	} */
+	reg |= BOOTLOADER_MODE;
 	writel_relaxed(reg, reset + PMC_SCRATCH0);
 	/* use *_related to avoid spinlock since caches are off */
 	reg = readl_relaxed(reset);
